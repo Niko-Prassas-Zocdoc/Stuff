@@ -22,6 +22,9 @@ def is_camel_case_with_dots(string):
     if not any(c.isupper() for c in string):
         return False
 
+    if not any(c == '.' for c in string):
+        return False
+
     return True
 
 def verify_args():
@@ -57,74 +60,46 @@ def write_sql_to_scripts_folder(file_path, sql):
     subprocess.run(["git", "switch", "master"], check=True)
     # subprocess.run(["git", "switch", "-c", branch_name], check=True)
     subprocess.run(["git", "switch", branch_name], check=True)
-#    file = open(file_path, "w")
-#    file.write(sql)
-#    file.close()
-#    subprocess.run(["git", "add", "-A"], check=True)
-#    subprocess.run(["git", "commit", "-m", "Create new role"], check=True)
-#    subprocess.run(["git", "push"], check=True)
+    file = open(file_path, "w")
+    file.write(sql)
+    file.close()
+    subprocess.run(["git", "add", "-A"], check=True)
+    subprocess.run(["git", "commit", "-m", "Create new role"], check=True)
+    subprocess.run(["git", "push"], check=True)
 
-def touch_other_monolith_files(role_name):
+def touch_other_monolith_files(role_name_with_dots):
     base_path = os.path.expanduser("~/src/zocdoc_web")
+    role_name = role_name_with_dots.replace(".", "")
+    role_name_snake_case = to_snake_case_lower(role_name)
 
     files_to_touch = [
-        os.path.join(base_path, "ZocDoc.Constants/RoleName.cs"), 
-        os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Impl/JWT/v2/JwtRoleIds.cs"),
-        os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Impl/JWT/v2/JwtV2ClaimsService.cs"),
-        os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Tests/JWT/v2/JwtV2ClaimsServiceTests.cs"),
+        (os.path.join(base_path, "ZocDoc.Constants/RoleName.cs"), f"""
+// add this
+const string {role_name} = "{role_name_with_dots}";
+        """),
+        (os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Impl/JWT/v2/JwtRoleIds.cs"), f"""
+// add this, but change the number
+public const int {role_name_snake_case} = -12345;
+        """),
+        (os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Impl/JWT/v2/JwtV2ClaimsService.cs"), f"""
+// add this to the _roleMapping variable
+[RoleName.{role_name}] = JwtRoleIds.{role_name_snake_case},
+        """),
+        (os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Tests/JWT/v2/JwtV2ClaimsServiceTests.cs"), f"""
+// add this
+(RoleName.{role_name}, JwtRoleIds.{role_name_snake_case}),
+        """),
     ]
 
-    add_role_name_to_csharp_class(files_to_touch[0], role_name, role_name)
-    add_jwt_id_to_csharp_class(files_to_touch[1], to_snake_case_lower(role_name), role_name)
+#    add_role_name_to_csharp_class(files_to_touch[0], role_name, role_name)
 
-    for f in files_to_touch:
+    for f, code_to_add in files_to_touch:
         with open(f, 'a') as f:
-            f.write("// comment")
+            f.write(code_to_add)
 
     subprocess.run(["git", "add", "-A"], check=True)
     subprocess.run(["git", "commit", "-m", "Touch other files"], check=True)
     subprocess.run(["git", "push"], check=True)
-
-def add_jwt_id_to_csharp_class(file_path, new_const_name, new_const_value):
-    # Read the contents of the file
-    with open(file_path, 'r') as file:
-        content = file.read()
-
-    # Define the pattern to match the class content
-    pattern = r'(internal static class JwtRoleIds\s*{)([^}]*)(})'
-
-    # Find the class content
-    match = re.search(pattern, content, re.DOTALL)
-
-    if match:
-        # Get the existing class parts
-        class_start = match.group(1)
-        class_content = match.group(2)
-        class_end = match.group(3)
-
-        # Determine the indentation of the last line in class_content
-        last_line = class_content.strip().split('\n')[-1]
-        indentation = re.match(r'\s*', last_line).group()
-
-        # Create the new const string with matching indentation
-        new_const = f'\n{indentation}public const int {new_const_name} = {new_const_value};'
-
-        # Add the new const to the class content
-        updated_class_content = class_content.rstrip() + new_const
-
-        # Reconstruct the updated class
-        updated_class = f'{class_start}{updated_class_content}\n{indentation[:-4]}{class_end}'
-
-        # Replace the old class with the updated one
-        updated_content = content.replace(match.group(0), updated_class)
-
-        # Write the updated content back to the file
-        with open(file_path, 'w') as file:
-            file.write(updated_content)
-
-        print(f"Successfully added {new_const_name} to the RoleName class.")
-    else:
-        print("RoleName class not found in the file.")
 
 def add_role_name_to_csharp_class(file_path, new_const_name, new_const_value):
     # Read the contents of the file
