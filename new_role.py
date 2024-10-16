@@ -5,7 +5,8 @@ import subprocess
 from datetime import datetime
 
 def to_snake_case_lower(string):
-    return re.sub(r'(?<!^)(?=[A-Z])', '_', string).lower()
+    str_cleaned = string.replace(".", "")
+    return re.sub(r'(?<!^)(?=[A-Z])', '_', str_cleaned).lower()
     
 def is_camel_case_with_dots(string):
     """
@@ -53,12 +54,12 @@ end
     return sql_script
 
 
-def write_sql_to_scripts_folder(file_path, sql):  
-    branch_name = "new_role_6"
+def write_sql_to_scripts_folder(file_path, sql, role_name_snake_case):  
+    branch_name = f"np_new_role_{role_name_snake_case}"
     path = os.path.expanduser("~/src/zocdoc_web")
     os.chdir(path)
     subprocess.run(["git", "switch", "master"], check=True)
-    # subprocess.run(["git", "switch", "-c", branch_name], check=True)
+    subprocess.run(["git", "switch", "-c", branch_name], check=True)
     subprocess.run(["git", "switch", branch_name], check=True)
     file = open(file_path, "w")
     file.write(sql)
@@ -110,7 +111,7 @@ def main():
     script_file_path = os.path.join(os.path.expanduser("~/src/zocdoc_web/Database/DataScripts"), script_file_name)
     sql_script = get_sql_script(role_name)
 
-    write_sql_to_scripts_folder(script_file_path, sql_script)
+    write_sql_to_scripts_folder(script_file_path, sql_script, role_name_snake_case)
     touch_other_monolith_files(role_name)
 
     print("SQL Script file:")
