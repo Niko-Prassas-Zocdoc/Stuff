@@ -34,6 +34,7 @@ A handy collection of frequently used commands for various tools and tasks.
 ## AWS Commands
 - `aws ecr describe-images --repository-name interop-availability-api --image-ids imageTag=fake-latest` - Get latest image tag (replace interop-availability-api with the name of the repository)
 - `aws ecr describe-images --repository-name monolith-api-fakes --image-ids imageTag=appointment-api-fake-latest` - Get latest image tag for a monolith api (replace appointment-api with the name of the api)
+- `aws lambda list-functions` - List lambda functions
 - `aws s3 ls` - List S3 buckets.
 - `aws s3 cp file.txt s3://bucket-name/` - Copy a file to an S3 bucket.
 - `aws ec2 describe-instances` - Describe EC2 instances.
