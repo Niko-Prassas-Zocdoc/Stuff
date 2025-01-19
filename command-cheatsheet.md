@@ -27,6 +27,7 @@ A handy collection of frequently used commands for various tools and tasks.
 - `git checkout -b <branch-name>` - Create and switch to a new branch.
 - `git pull origin main` - Pull changes from the main branch.
 - `git stash` - Temporarily save changes.
+- `git remote -v` - View configured remote repositories (like origin, upstream) and their URLs.
 
 ---
 
