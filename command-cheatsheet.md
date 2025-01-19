@@ -13,8 +13,8 @@ A handy collection of frequently used commands for various tools and tasks.
 ---
 
 ## Vim Shortcuts
-- `:wq` - Save and quit.
-- `dd` - Delete the current line.
+- `Ctrl-e` - Scroll down one line (without moving the cursor).
+- `Ctrl-y` - Scroll up one line (without moving the cursor).
 - `yyp` - Copy and paste the current line.
 - `/search_term` - Search for `search_term`.
 - `:set nu` - Show line numbers.
