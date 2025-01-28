@@ -44,6 +44,7 @@ A handy collection of frequently used commands for various tools and tasks.
 
 ## Dotnet Commands
 - `dotnet add package [PackageName]` - Update package to the latest version
+- `dotnet list package` - List all packages in current project
 
 ---
 
