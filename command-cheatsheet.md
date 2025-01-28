@@ -8,7 +8,8 @@ A handy collection of frequently used commands for various tools and tasks.
 1. [Vim Shortcuts](#vim-shortcuts)
 2. [Git Commands](#git-commands)
 3. [AWS Commands](#aws-commands)
-4. [Other Useful Tips](#other-useful-tips)
+4. [Dotnet Commands] (#dotnet-commands)
+5. [Other Useful Tips](#other-useful-tips)
 
 ---
 
@@ -38,6 +39,11 @@ A handy collection of frequently used commands for various tools and tasks.
 - `aws s3 ls` - List S3 buckets.
 - `aws s3 cp file.txt s3://bucket-name/` - Copy a file to an S3 bucket.
 - `aws ec2 describe-instances` - Describe EC2 instances.
+
+---
+
+## Dotnet Commands
+- `dotnet add package [PackageName]` - Update package to the latest version
 
 ---
 
