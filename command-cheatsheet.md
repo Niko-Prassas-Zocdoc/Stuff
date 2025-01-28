@@ -8,7 +8,7 @@ A handy collection of frequently used commands for various tools and tasks.
 1. [Vim Shortcuts](#vim-shortcuts)
 2. [Git Commands](#git-commands)
 3. [AWS Commands](#aws-commands)
-4. [Dotnet Commands] (#dotnet-commands)
+4. [Dotnet Commands](#dotnet-commands)
 5. [Other Useful Tips](#other-useful-tips)
 
 ---
