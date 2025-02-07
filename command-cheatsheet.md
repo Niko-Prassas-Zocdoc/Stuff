@@ -56,7 +56,7 @@ A handy collection of frequently used commands for various tools and tasks.
 - `docker rm -f $(docker ps -aq)` - Stop and remove all containers in one go
 - `docker kill $(docker ps -q)` - Kill all running containers
 - `docker rm $(docker ps -a -q)` - Remove all stopped containers
-- `docker rmi $(docker images -q)` - Remove all images
+- `docker rmi -f $(docker images -q)` - Remove all images
 - `docker system prune -a --volumes` - Remove all unused containers, networks, images, and volumes (most thorough cleanup)
 
 ---
