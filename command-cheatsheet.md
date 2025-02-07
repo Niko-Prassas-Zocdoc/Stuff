@@ -9,7 +9,8 @@ A handy collection of frequently used commands for various tools and tasks.
 2. [Git Commands](#git-commands)
 3. [AWS Commands](#aws-commands)
 4. [Dotnet Commands](#dotnet-commands)
-5. [Other Useful Tips](#other-useful-tips)
+5. [Docker Commands](#docker-commands)
+6. [Other Useful Tips](#other-useful-tips)
 
 ---
 
@@ -49,12 +50,19 @@ A handy collection of frequently used commands for various tools and tasks.
 
 ---
 
+## Docker Commands
+- `docker ps` - List running containers
+- `docker images` - List all Docker images
+- `docker kill $(docker ps -q)` - Kill all running containers
+- `docker rm $(docker ps -a -q)` - Remove all stopped containers
+- `docker rmi $(docker images -q)` - Remove all images
+- `docker system prune -a --volumes` - Remove all unused containers, networks, images, and volumes (most thorough cleanup)
+
+---
+
 ## Other Useful Tips
 - **Curl Command**:
-  - `curl -X GET "https://api.example.com"` - Make a GET request.
-- **Docker Commands**:
-  - `docker ps` - List running containers.
-  - `docker images` - List all Docker images.
+  - `curl -X GET "https://api.example.com"` - Make a GET request
 
 ---
 
