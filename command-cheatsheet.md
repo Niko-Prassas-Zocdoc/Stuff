@@ -53,6 +53,7 @@ A handy collection of frequently used commands for various tools and tasks.
 ## Docker Commands
 - `docker ps` - List running containers
 - `docker images` - List all Docker images
+- `docker rm -f $(docker ps -aq)` - Stop and remove all containers in one go
 - `docker kill $(docker ps -q)` - Kill all running containers
 - `docker rm $(docker ps -a -q)` - Remove all stopped containers
 - `docker rmi $(docker images -q)` - Remove all images
