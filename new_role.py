@@ -76,7 +76,7 @@ def touch_other_monolith_files(role_name_with_dots):
     files_to_touch = [
         (os.path.join(base_path, "ZocDoc.Constants/RoleName.cs"), f"""
 // add this
-const string {role_name} = "{role_name_with_dots}";
+public const string {role_name} = "{role_name_with_dots}";
         """),
         (os.path.join(base_path, "ZocDoc.Security/ZocDoc.Security.Impl/JWT/v2/JwtRoleIds.cs"), f"""
 // add this, but change the number
