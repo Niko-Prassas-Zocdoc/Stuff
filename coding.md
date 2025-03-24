@@ -1,1 +1,1 @@
-hey
+- Shared state in tests is usually problematic. It leads to test code that is hard to untangle.  Creating new variables in tests is better.
