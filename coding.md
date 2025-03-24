@@ -1,4 +1,4 @@
-- Shared state in integration tests is usually problematic. It leads to race conditions and other test code that are hard to untangle.  Creating new variables in tests is better.
+### Shared state in integration tests is usually problematic. It leads to race conditions and other test code that are hard to untangle.  Creating new variables in tests is better.
 
   #### ❌ Bad Sharing
   ```csharp
@@ -31,4 +31,4 @@
     var resource = CreateResource(providerId1);
   }
   ```
-- if statements and other logic in tests are bad
+### If statements and other logic in tests are bad
