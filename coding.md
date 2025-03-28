@@ -33,4 +33,8 @@ It leads to race conditions and other test code that are hard to untangle.  Crea
     var resource = CreateResource(providerId1);
   }
   ```
-### If statements and other logic in tests are bad
+### If statements and other logic in tests are bad.
+
+### Code that is "hard to test" is probably not well written.
+
+### Being able to run and test code locally is important.  This seems trivial but depending on the repo or domain at Zocdoc, it is not always considered enough.
