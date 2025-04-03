@@ -38,3 +38,5 @@ It leads to race conditions and other test code that are hard to untangle.  Crea
 ### Code that is "hard to test" is probably not well written.
 
 ### Being able to run and test code locally is important.  This seems trivial but depending on the repo or domain at Zocdoc, it is not always considered enough.
+
+### In Integration tests, don't delete data in between runs. Data shouldn't have to be deleted in order for you test to work.
