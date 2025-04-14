@@ -30,6 +30,7 @@ A handy collection of frequently used commands for various tools and tasks.
 - `git pull origin main` - Pull changes from the main branch.
 - `git stash` - Temporarily save changes.
 - `git remote -v` - View configured remote repositories (like origin, upstream) and their URLs.
+- `git clean -fd` - Remove untracked files.  Be careful as this includes a -f for forcing it.
 - ``current_branch_name=`git rev-parse --abbrev-ref HEAD` && git fetch origin $current_branch_name && git rebase origin/"$current_branch_name"`` - Rebase remote branch onto local branch (Same branch name)
 
 ---
