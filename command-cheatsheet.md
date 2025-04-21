@@ -10,7 +10,8 @@ A handy collection of frequently used commands for various tools and tasks.
 3. [AWS Commands](#aws-commands)
 4. [Dotnet Commands](#dotnet-commands)
 5. [Docker Commands](#docker-commands)
-6. [Other Useful Tips](#other-useful-tips)
+6. [Pants Commands](#pants-commands)
+7. [Other Useful Tips](#other-useful-tips)
 
 ---
 
@@ -50,6 +51,12 @@ A handy collection of frequently used commands for various tools and tasks.
 - `dotnet add package [PackageName]` - Update package to the latest version
 - `dotnet add package [PackageName] -v [VersionNumber]` - Add specific version of package
 - `dotnet list package` - List all packages in current project
+
+---
+
+## Pants Commands
+- `$ pants run //cdk:cdk --cdk-profile=ci --cdk-args='--context=zd:skipEcrImageValidation=true --no-change-set'` - See the result of cdk diff against the CI account
+- `pants package //cdk:cdk --cdk-profile=ci` - Generate result of cdk synth
 
 ---
 
