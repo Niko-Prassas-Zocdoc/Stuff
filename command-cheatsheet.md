@@ -46,6 +46,7 @@ A handy collection of frequently used commands for various tools and tasks.
 - `aws ec2 describe-instances` - Describe EC2 instances.
 - `aws sts get-caller-identity --profile ci` - Get caller identity from local command line, make sure your credentials are working as expected
 - `aws dynamodb list-tables`
+- `aws dynamodb scan --table-name [my-table-name]` -- scan table
 
 ---
 
