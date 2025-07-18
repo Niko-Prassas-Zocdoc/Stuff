@@ -71,7 +71,7 @@ A handy collection of frequently used commands for various tools and tasks.
 - `docker rm $(docker ps -a -q)` - Remove all stopped containers
 - `docker rmi -f $(docker images -q)` - Remove all images
 - `docker system prune -a --volumes` - Remove all unused containers, networks, images, and volumes (most thorough cleanup)
-- `docker exec -it <container_name_or_id> bash` Start a bash shell inside a docker container
+- `docker exec -it <container_name_or_id> bash` - Start a bash shell inside a docker container
 
 ---
 
