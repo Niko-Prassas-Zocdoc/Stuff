@@ -78,6 +78,7 @@ A handy collection of frequently used commands for various tools and tasks.
 ## Other Useful Tips
 - **Curl Command**:
   - `curl -X GET "https://api.example.com"` - Make a GET request
+  - `paket update nuget <PackageName>` - Update a package.  This is useful for the monolith.
 
 ---
 
