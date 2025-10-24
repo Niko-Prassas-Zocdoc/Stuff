@@ -60,6 +60,7 @@ A handy collection of frequently used commands for various tools and tasks.
 ## Pants Commands
 - `$ pants run //cdk:cdk --cdk-profile=ci --cdk-args='--context=zd:skipEcrImageValidation=true --no-change-set'` - See the result of cdk diff against the CI account
 - `pants package //cdk:cdk --cdk-profile=ci` - Generate result of cdk synth
+- `pkill -f pants` - sometimes we need to kill pants when it's being wonky
 
 ---
 
